@@ -1,10 +1,9 @@
 
 import React, { useState } from 'react';   
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, IconButton, Tooltip, Switch, ThemeProvider } from  '@material-ui/core';
+import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, Tooltip, Switch, ThemeProvider } from  '@material-ui/core';
 
 import { GTranslate, Person, ContactMail, NightsStay, GetApp, Brightness7 } from '@material-ui/icons';
-import MenuIcon from '@material-ui/icons/Menu';
 import GoToID from '../../Helpers/GoToID';
 
 const useStyles = makeStyles((theme) => ({
