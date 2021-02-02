@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react';   
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, Tooltip, Switch, ThemeProvider } from  '@material-ui/core';
-
+import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, Tooltip, Switch, ThemeProvider, IconButton } from  '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import { GTranslate, Person, ContactMail, NightsStay, GetApp, Brightness7 } from '@material-ui/icons';
 import GoToID from '../../Helpers/GoToID';
+import DrawerActions from './DrawerActions';
 
 const useStyles = makeStyles((theme) => ({
   toolbar:{
@@ -28,9 +29,28 @@ const useStyles = makeStyles((theme) => ({
   }, 
   menu:{
     background:'#424242',
-    left:'88%!important',
+    left:'88%',
     color:'#fafafa'
-  }
+  },
+  actions:{
+    [ theme.breakpoints.up('xs', 'sm')]: {
+      display:'none',
+    }, 
+    [ theme.breakpoints.up('md','lg', 'xl')]: {
+      display:'flex',
+    },
+  },
+  menuButton:{
+    [ theme.breakpoints.up('xs', 'sm')]: {
+      display:'inline-flex',
+    }, 
+    [ theme.breakpoints.up('md','lg', 'xl')]: {
+      display:'none',
+    },  
+  }, 
+  menuTranslate:{
+    margin: 5
+  }, 
 }));
 
 const theme = createMuiTheme({
@@ -45,7 +65,8 @@ const NavBar = (props) => {
     const classes = useStyles();
     const {title, themeModeLight, setThemeModeLight } = {...props};
     const [ menuTranslate, setMenuTranslate ] = useState( null );
-    
+    const [ openDrawer, setOpenDrawer ] = useState( false );
+    const anchor ="anchorMenuButton";
     const openTranslateMenu = ( event ) =>{
         setMenuTranslate(event.currentTarget);
     }
@@ -90,13 +111,22 @@ const NavBar = (props) => {
         <AppBar className={classes.appbar}>
             <Toolbar className={classes.toolbar}>
                 <div >
-                  <Button onClick={(e)=>GoToID(e, "Inicial")} className={classes.color} >
+                <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={()=>setOpenDrawer(true)}
+                >
+                  <MenuIcon />
+                </IconButton>
+                  <Button onClick={(e)=>GoToID(e, "back-to-top-anchor")} className={classes.color} >
                     <Typography variant="h6">
                       {title}
                     </Typography>
                   </Button>
                 </div>
-                <div>
+                <div className={classes.actions}>
                   <Actions/>
                   <Menu
                     id="simple-menu"
@@ -114,6 +144,7 @@ const NavBar = (props) => {
             </Toolbar>
         </AppBar>
         <Toolbar id="back-to-top-anchor" />
+        <DrawerActions anchor={anchor} openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
         </div> 
     );
 }

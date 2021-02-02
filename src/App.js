@@ -30,6 +30,7 @@ const App = ( props ) =>{
                     title={"Aldo Matias"}
                     themeModeLight={themeModeLight}
                     setThemeModeLight={setThemeModeLight}
+                    id={"NavBar"}
                 /> 
                 <ContentPage themeLight={themeModeLight} />
                 <ScrollTop {...props}>
