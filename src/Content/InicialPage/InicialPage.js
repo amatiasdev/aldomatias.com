@@ -18,6 +18,7 @@ import GoToID from '../../Helpers/GoToID';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    margin:30
   }, 
   media:{
     height:200,
@@ -26,6 +27,12 @@ const useStyles = makeStyles((theme) => ({
     transition: 'transform .2s',
     '&:hover':{
       transform: 'scale(0.9)'
+    },
+    [ theme.breakpoints.up('xs', 'sm')]: {
+      transform: 'scale(0.8)'
+    }, 
+    [ theme.breakpoints.up('md','lg', 'xl')]: {
+      transform: 'scale(1)'
     },
   }
 }));
@@ -37,12 +44,14 @@ export default function InicialPage({themeLight}) {
 
   return (
     <div id="Inicial">
-      <Box
-        display="flex" 
-        justifyContent="center" 
-        p={1}
-        m={8}  
-      >  
+      <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          alignContent="center"
+        >
+      <Grid item>
       <Card className={classes.root} >
         <CardHeader
           title="Desarrollador de Software"
@@ -70,22 +79,21 @@ export default function InicialPage({themeLight}) {
           </Typography>
         </CardContent>
         <CardActions >
-          <Grid container>
-            <Grid item xs>
+          <Grid container  direction="row" justify="center"  >
+            <Grid item xs={7} lg={2}>
               <IconButton aria-label="add to favorites" href="https://github.com/rheazyk" target="_blank">
                 <Icon className="fa fa-github" />
               </IconButton>
             </Grid>
-            <Grid item xs>
+            <Grid item lg={2} >
               <IconButton aria-label="add to favorites" href="https://www.linkedin.com/in/aldomatias-/" target="_blank">
                 <Icon className="fa fa-linkedin" />
               </IconButton>
             </Grid>
-            <Grid item xs={8}>
-              <div style={{paddingTop:themeLight? 14 :0}}>  
+            <Grid item xs={8} lg={8} >
+              <div style={{paddingTop:14}}>  
                 <a href="https://www.freecodecamp.org/rheazyk" target="_blank">
-                  <img src={themeLight ? freecodeCamp :freecodeCampBlack} 
-                  style={{width: '100%',  height: '100%',}}
+                  <img src={themeLight ? freecodeCamp :freecodeCampBlack} className="freecodecamp" 
                   alt="freecodecamp.org"/>
                 </a> 
               </div>
@@ -103,7 +111,8 @@ export default function InicialPage({themeLight}) {
           </Grid>
         </CardActions>
       </Card>
-      </Box>
+      </Grid>  
+      </Grid>   
     </div>
   );
 }
