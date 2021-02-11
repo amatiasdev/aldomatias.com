@@ -4,7 +4,7 @@ import { ContactMail, GTranslate, Person, GetApp } from '@material-ui/icons'
 import GoToID from '../../Helpers/GoToID'
 
 
-export default function DrawerActions({openDrawer, setOpenDrawer}) {
+export default function DrawerActions({openDrawer, setOpenDrawer, setOpenModal}) {
     
     const [ menuTranslate, setMenuTranslate ] = useState( null );
 
@@ -27,7 +27,7 @@ export default function DrawerActions({openDrawer, setOpenDrawer}) {
                     <ListItemIcon><ContactMail/></ListItemIcon>
                     <ListItemText primary={"CONTACTAR"} />
                 </ListItem>
-                <ListItem button key={"CV"} onClick={(e)=>{GoToID(e, "AboutMe");}}>
+                <ListItem button key={"CV"} onClick={(e)=>{setOpenModal(true);}}>
                     <ListItemIcon><GetApp/></ListItemIcon>
                     <ListItemText primary={"CV"} />
                 </ListItem>

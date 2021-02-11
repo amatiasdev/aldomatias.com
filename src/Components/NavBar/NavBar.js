@@ -1,11 +1,13 @@
 
 import React, { useState } from 'react';   
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, Tooltip, Switch, ThemeProvider, IconButton } from  '@material-ui/core';
+import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, Tooltip, Switch, ThemeProvider, IconButton, Modal } from  '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { GTranslate, Person, ContactMail, NightsStay, GetApp, Brightness7 } from '@material-ui/icons';
 import GoToID from '../../Helpers/GoToID';
 import DrawerActions from './DrawerActions';
+import CVAldo from '../../files/CV Aldo Matias.pdf';
+import ModalService from '../Modal/ModalService';
 
 const useStyles = makeStyles((theme) => ({
   toolbar:{
@@ -66,6 +68,7 @@ const NavBar = (props) => {
     const {title, themeModeLight, setThemeModeLight } = {...props};
     const [ menuTranslate, setMenuTranslate ] = useState( null );
     const [ openDrawer, setOpenDrawer ] = useState( false );
+    const [ openModal, setOpenModal ] = useState( false );
     const anchor ="anchorMenuButton";
     const openTranslateMenu = ( event ) =>{
         setMenuTranslate(event.currentTarget);
@@ -74,6 +77,10 @@ const NavBar = (props) => {
     const closeTranslateMenu = () => {
         setMenuTranslate(null);
     };
+
+    const downloadCV = ()=>{ 
+      setOpenModal(true);
+    }
 
     const Actions = () =>{
       return (
@@ -85,7 +92,7 @@ const NavBar = (props) => {
               {"CONTACTAR"}
           </Button>
           <Tooltip title="Descargar CV">
-            <Button className={classes.color} startIcon={<GetApp/>} >
+            <Button className={classes.color} startIcon={<GetApp/>} onClick={()=>{downloadCV()}} >
               {"CV"}
             </Button>
           </Tooltip>
@@ -144,7 +151,14 @@ const NavBar = (props) => {
             </Toolbar>
         </AppBar>
         <Toolbar id="back-to-top-anchor" />
-        <DrawerActions anchor={anchor} openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
+        <DrawerActions anchor={anchor} openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} setOpenModal={setOpenModal}/>
+        <ModalService
+          openModal={openModal}
+          setOpenModal={setOpenModal} 
+          parentNode={"root"}
+        >
+          <object data={CVAldo} download={'Aldo Matias CV.pdf'} type='application/pdf' width='100%' height='100%'></object>
+        </ModalService>
         </div> 
     );
 }
