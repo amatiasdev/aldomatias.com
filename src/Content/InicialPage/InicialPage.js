@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 export default function InicialPage({themeLight}) {
   
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
 
   return (
     <div id="Inicial">

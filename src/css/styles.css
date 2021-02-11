@@ -6,23 +6,38 @@
     content: url('../img/freecodecampHover.png');
 
 }
-.impar{
-    height: 100vh;
-    background-color: #e5e2e2;
+.impar{ 
+    background-image: url('../img/building.png');
+    background-size: cover; 
 }
-.par{
-    height: 100vh;
-    background-color: #212121;
+.par{ 
+    background-image: url('../img/building.jpg');
+    background-size: cover; 
 }
-.impar .content{
-    margin: 0% 5%;
-    background-color: #ffffff;
+
+.impar .content, .par .content{ 
+    background-color: rgba(1, 1, 1, 0.5); 
+    display: flex;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
+.content span{
+    font-size: 100px;
+}
+
 #simple-menu{
     position: absolute;
 }
 
-/* .freecodecamp:hover{ 
-    content: attr("src", '../img/freecodecampHover.png')
-} */
+.content{
+    display:flex;
+    align-items: center;
+    align-content: center;
+}
+.MuiStepConnector-vertical{
+    margin-left: 25px!important;
+}
+.MuiStepLabel-root:hover{
+    cursor: pointer!important;
+}
