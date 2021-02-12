@@ -97,9 +97,7 @@ const NavBar = (props) => {
             </Button>
           </Tooltip>
           <Tooltip title="Cambiar idioma">
-            <Button  className={classes.color} aria-controls="translate-menu" aria-haspopup="true" onClick={openTranslateMenu} startIcon={<GTranslate/>} >
-              
-            </Button>
+            <Button  className={classes.color} aria-controls="translate-menu" aria-haspopup="true" onClick={openTranslateMenu} startIcon={<GTranslate/>}  />
           </Tooltip>
            
           <ThemeProvider theme={theme}>
