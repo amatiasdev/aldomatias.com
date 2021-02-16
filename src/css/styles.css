@@ -41,3 +41,15 @@
 .MuiStepLabel-root:hover{
     cursor: pointer!important;
 }
+.buttonWatchMore{
+    animation-name: parpadeo;
+    animation-duration: 3.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
