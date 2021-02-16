@@ -1,13 +1,14 @@
 
 import React, { useState } from 'react';   
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, Tooltip, Switch, ThemeProvider, IconButton, Modal } from  '@material-ui/core';
+import {AppBar, Toolbar, Typography, CssBaseline, Menu, Button, MenuItem, Tooltip, Switch, ThemeProvider, IconButton, Modal, Link, Avatar, Grid } from  '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { GTranslate, Person, ContactMail, NightsStay, GetApp, Brightness7 } from '@material-ui/icons';
 import GoToID from '../../Helpers/GoToID';
 import DrawerActions from './DrawerActions';
 import CVAldo from '../../files/CV Aldo Matias.pdf';
 import ModalService from '../Modal/ModalService';
+import Aldo from '../../img/Aldo.png';
 
 const useStyles = makeStyles((theme) => ({
   toolbar:{
@@ -53,6 +54,18 @@ const useStyles = makeStyles((theme) => ({
   menuTranslate:{
     margin: 5
   }, 
+  avatarInicio:{
+    '&:hover':{
+      transform: 'scale(1.1)',
+      cursor: 'pointer'
+    }
+  },
+  title:{
+    color:'#fafafa',
+  },
+  containerTitle:{
+    width:'auto'
+  }
 }));
 
 const theme = createMuiTheme({
@@ -102,8 +115,7 @@ const NavBar = (props) => {
            
           <ThemeProvider theme={theme}>
           <Tooltip title={ themeModeLight ? "Quitar modo nocturno": "Cambiar a modo nocturno"}>
-                <Switch icon={<NightsStay className={classes.iconSwitch}/>}  checkedIcon={<Brightness7 className={classes.iconSwitch}/>} checked={themeModeLight} color="primary" onChange={()=>setThemeModeLight(!themeModeLight)} name="checkedC" className={classes.menuTranslate} /> 
-              
+            <Switch icon={<NightsStay className={classes.iconSwitch}/>}  checkedIcon={<Brightness7 className={classes.iconSwitch}/>} checked={themeModeLight} color="primary" onChange={()=>setThemeModeLight(!themeModeLight)} name="checkedC" className={classes.menuTranslate} /> 
           </Tooltip>
           </ThemeProvider>
         </>
@@ -115,22 +127,33 @@ const NavBar = (props) => {
         <CssBaseline/>
         <AppBar className={classes.appbar}>
             <Toolbar className={classes.toolbar}>
-                <div >
-                <IconButton
-                  edge="start"
-                  className={classes.menuButton}
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={()=>setOpenDrawer(true)}
-                >
-                  <MenuIcon />
-                </IconButton>
-                  <Button onClick={(e)=>GoToID(e, "back-to-top-anchor")} className={classes.color} >
-                    <Typography variant="h6">
-                      {title}
-                    </Typography>
-                  </Button>
-                </div>
+                <Grid container spacing={1} className={classes.containerTitle} alignItems={'center'}>
+                    <Grid item>
+                      <IconButton
+                        edge="start"
+                        className={classes.menuButton}
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={()=>setOpenDrawer(true)}
+                      >
+                        <MenuIcon />
+                      </IconButton> 
+                    </Grid>
+                    <Grid item>
+                      <Avatar alt="Aldo Matias" src={Aldo} imgProps={{onClick:(e)=>{GoToID(e, "back-to-top-anchor")}}} className={classes.avatarInicio}/>
+                    </Grid>
+                    <Grid item>
+                      <Link
+                        component="button" 
+                        underline='none'
+                        onClick={(e)=>GoToID(e, "back-to-top-anchor")}
+                      >
+                        <Typography variant="h6" className={classes.title}>
+                          {title}
+                        </Typography>
+                      </Link>
+                    </Grid>
+                </Grid> 
                 <div className={classes.actions}>
                   <Actions/>
                   <Menu

@@ -1,25 +1,21 @@
+import { Paper } from "@material-ui/core";
 import React, { Fragment } from "react";
+import FormContact from "./Content/Forms/FormContact";
 import InicialPage from "./Content/InicialPage/InicialPage";
-// import building from './img/building.jpg'
-// import Technologies from "./Content/InicialPage/Technologies";
 import AboutMe from "./Content/InicialPage/AboutMe";
-
 
 export default function ContentPage ({themeLight}){
 
     return(
         <Fragment>
-            <InicialPage themeLight={themeLight}/> 
-            <div id="AboutMe">
-                    <AboutMe/>
-            </div>
-            <div id="Contact" className="impar">
-                <div className="content">
-                    {/* <span>{"EN CONSTRUCCIÓN"}</span> */}
-                </div>
-                {/* <img src={building}/> */}
-            </div>
-            <div id="Skills" className="par">
+            <InicialPage themeLight={themeLight}/>  
+            <Paper square id="AboutMe" >
+                <AboutMe/>
+            </Paper>
+            <Paper square id="Contact" >
+                <FormContact/>
+            </Paper>
+            <div id="CV" className="par">
                 <div className="content">
                     {/* <span>{"EN CONSTRUCCIÓN"}</span> */}
                 </div>

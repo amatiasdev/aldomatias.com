@@ -4,7 +4,8 @@ import { Stepper, Step, StepLabel, StepContent, Button, Typography, Paper } from
 import { School, MenuBook, Apartment, Business, Group, Work } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: '100%', 
+    paddingTop: theme.spacing(12)
   },
   button: {
     marginTop: theme.spacing(1),
@@ -51,10 +52,10 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [  'Estudié Ingenieria en Sistemas Computacionales.', 
-            'Realicé un par de proyectos para mi Universidad.',
-            `Fundé la comunidad estudiantil INNOVA TESI.`, 
-            'Realicé mis residencias profesionales en Kristal Software .',
-            'Comencé a trabajar como desarrollador FrontEnd en iGenter México.',
+            'Realicé un par de proyectos para mi Universidad.', 
+            <span>{'Fundé la comunidad estudiantil '}<a href="https://www.facebook.com/InnovaTESI/" target="_blank">{'INNOVA TESI.'}</a></span>,
+            <span>{'Realicé mis residencias profesionales en '}<a href="http://ksh.com.mx" target="_blank">{'Kristal Software House.'}</a></span>,
+            <span>{'Comencé a trabajar como desarrollador FrontEnd en '}<a href="http://www.igenter.com/mx/" target="_blank">{'iGenter México.'}</a></span>,
             'En Septiembre de 2020 me titulé.',
         ];
 }
@@ -63,8 +64,8 @@ function getStepContent(step) {
   switch (step) {
     case 0:
       return  <span> 
-                 {`En el año 2014 comencé a estudiar en el Tecnológico de Estudios Superiores de Ixtapaluca la carrera de Ingeniería en Sistemas Computacionales.`}<br/>
-                 {`Decidí especializarme en desarrollo de Software.`} <br/>
+                 {`En el año 2014 comencé a estudiar en el `}<a href="https://tesi.org.mx/" target="_blank">{`Tecnológico de Estudios Superiores de Ixtapaluca`}</a>{` la carrera de Ingeniería en Sistemas Computacionales.`}<br/>
+                 {`Decidí orientarme hacia el desarrollo de Software.`} <br/>
               </span>;
     case 1:
       return  <span>
@@ -74,7 +75,7 @@ function getStepContent(step) {
               </span>; 
     case 2:
       return  <span>
-                 {`En el año 2018 comencé un proyecto llamado `} <a target="_blank" href="https://www.facebook.com/InnovaTESI/">{`INNOVA TESI.`}</a><br/>
+                 {`En el año 2018 comencé un proyecto llamado INNOVA TESI.`}<br/>
                  {`Es una comunidad estudiantil en donde se comparte conocimiento en torno a tecnología, se desarrollan concursos de programación, además fuimos 
                       parte de las comunidades de dos de los eventos de tecnología más grandes de México, Campus Party en su momento y
                       actualmente lo somos en Talent Land.`} <br/> 

@@ -12,8 +12,9 @@ import Icon from '@material-ui/core/Icon';
 import Aldo from '../../img/Aldo.png';
 import freecodeCampBlack from '../../img/freecodecampBlack.png';
 import freecodeCamp from '../../img/freecodecamp.png'; 
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Fab } from '@material-ui/core';
 import GoToID from '../../Helpers/GoToID';
+import { KeyboardArrowDown } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     [ theme.breakpoints.up('md','lg', 'xl')]: {
       transform: 'scale(1)'
     },
-  }
+  },
 }));
 
 export default function InicialPage({themeLight}) {
@@ -71,10 +72,7 @@ export default function InicialPage({themeLight}) {
         </Grid>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            Desarrollador de Software residente de la ciudad de México, entusiasta de tecnologías como Bitcoin, Blockchain y la computación cuantica.
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p"> 
-            Actualmente soy desarrollador Frontend con React.js en iGenter México.
+            ¡Hola! Soy Aldo y soy desarrollador de Software residente de la Ciudad de México, actualmente desarrollando en el Frontend con React.js en iGenter México.
           </Typography>
         </CardContent>
         <CardActions >
@@ -110,7 +108,12 @@ export default function InicialPage({themeLight}) {
           </Grid>
         </CardActions>
       </Card>
-      </Grid>  
+      </Grid> 
+      <Grid item>
+        <Fab color="primary" size="small" aria-label="scroll back to top" className={"buttonWatchMore"}>
+            <KeyboardArrowDown />
+        </Fab>
+      </Grid> 
       </Grid>   
     </div>
   );

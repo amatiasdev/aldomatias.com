@@ -1,10 +1,25 @@
 import { TextField } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
+import { inputValidation } from '../../../Helpers/HelperValidation';
 
 const InputText = props =>{ 
+
+    const [ error, setErrorText ] = useState(null);
+    const toValid = ( e ) =>{
+        console.log(props);
+        if(props.required)
+        setErrorText(inputValidation({inputType: props.inputtype, value: e.target.value.trim()}));
+    }
+
     return (
-        <TextField 
+        <TextField
+            variant="filled"
+            fullWidth 
             {...props}
+            onBlur={toValid}
+            helperText={error}
+            error={error!==null}
+            autoComplete={'off'}
         />
     );
 }
