@@ -13,7 +13,7 @@ export default function ContentPage ({themeLight}){
                 <AboutMe/>
             </Paper>
             <Paper square id="Contact" >
-                <FormContact/>
+                <FormContact themeLight={themeLight}/>
             </Paper>
             <div id="CV" className="par">
                 <div className="content">

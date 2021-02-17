@@ -4,8 +4,7 @@ import { Stepper, Step, StepLabel, StepContent, Button, Typography, Paper } from
 import { School, MenuBook, Apartment, Business, Group, Work } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%', 
-    paddingTop: theme.spacing(12)
+    width: '100%',
   },
   button: {
     marginTop: theme.spacing(1),
@@ -137,7 +136,7 @@ export default function AboutMe() {
       <Typography variant="h5"className={classes.title}>Acerca de mi</Typography>
       <Stepper activeStep={activeStep} orientation="vertical" className={classes.actionsHover}>
         {steps.map((label, index) => (
-          <Step key={label} className={classes.actionsHover} >
+          <Step key={index} className={classes.actionsHover} >
             <StepLabel StepIconComponent={ColorlibStepIcon} onClick={()=>{setActiveStep(index)}}>{label}</StepLabel>
             <StepContent className={classes.timeLine}>
               <Typography>{getStepContent(index)}</Typography>

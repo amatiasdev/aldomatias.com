@@ -1,28 +1,39 @@
 import { Button, Grid, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { createRef, useState } from 'react';
 import InputText from '../../Components/ScrollTop/InputText/InputText';
 import SendIcon from '@material-ui/icons/Send';
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(6),
-    paddingTop: theme.spacing(12)
   },
 }));
 
 const FormContact = props =>{
 
+    const ref = createRef('');
     const classes = useStyles();
+    const [ reCaptcha, setRecaptcha ] = useState(null);
+    const [ errorReCaptcha, setErrorReCaptcha ] = useState(false);
 
     const enviar = (e) =>{
         e.preventDefault();
-        console.log(e);
+        if(reCaptcha){
+            
+        }else{
+            setErrorReCaptcha(true);
+        }
+    }
+
+    const validReCaptcha = ( value ) => {
+        setRecaptcha(value);
     }
 
     return (  
-            <form id="contact" onSubmit={enviar} className={classes.root} novalidate>
+            <form id="contact" onSubmit={enviar} className={classes.root} noValidate>
                 <Grid container spacing={5}>
                     <Grid item>
                         <Typography variant="h5">
@@ -33,6 +44,7 @@ const FormContact = props =>{
                 <Grid container direction="column" justify="space-around" spacing={5}  >
                     <Grid item>
                         <InputText
+                            inputRef={ref}
                             id = 'idName'
                             label = "Nombre"
                             required
@@ -72,8 +84,21 @@ const FormContact = props =>{
                             required
                         />
                     </Grid>
+                </Grid>
+                <Grid container spacing={5}>
+                    <Grid item>
+                        <ReCAPTCHA
+                            sitekey="6LeVX1saAAAAAJg12tZ6OxW7HhcsZoMp09O3rulM"
+                            onChange={validReCaptcha}
+                            hl="es-419"
+                            onExpired={()=>{setRecaptcha(null)}}
+                            onErrored={()=>{setRecaptcha(null)}}
+                            theme={props.themeLight ? 'dark' : 'light'}
+                        />
+                        { errorReCaptcha && <p style={{ color: '#f44336', marginLeft: 14, marginRight: 14}} className={"MuiFormHelperText-root"} id="reCaptcha-helper-text">Valide que no es un robot.</p> } 
+                    </Grid>
                 </Grid> 
-                <Grid container justify="center" spacing={5}>
+                <Grid container spacing={5}>
                     <Grid item>
                         <Button 
                             variant='contained' color='primary'

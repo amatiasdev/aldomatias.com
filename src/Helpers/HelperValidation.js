@@ -10,9 +10,12 @@ const validation = {
 }
 
 export function inputValidation({inputType, value }){
-    if(validation.hasOwnProperty(inputType)) 
+    if(validation.hasOwnProperty(inputType)){
         if(!validation[inputType].regex.test(value)) 
             return validation[inputType].textError;
+    }else{
+        return 'Este campo es requerido.'
+    } 
     return null;
 }
 

@@ -6,7 +6,6 @@ const InputText = props =>{
 
     const [ error, setErrorText ] = useState(null);
     const toValid = ( e ) =>{
-        console.log(props);
         if(props.required)
         setErrorText(inputValidation({inputType: props.inputtype, value: e.target.value.trim()}));
     }
